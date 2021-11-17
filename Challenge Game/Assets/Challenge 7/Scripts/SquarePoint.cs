@@ -7,14 +7,24 @@ namespace Game.Challenge7
 {
     public class SquarePoint : MonoBehaviour
     {
+        public bool IsRespawn;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if(collision.tag == "Player")
             {
-                if(GameManager.Instance != null && GameManager.Instance.SquareSpawner != null)
+                if (IsRespawn)
                 {
-                    GameManager.Instance.SquareSpawner.SpawnNext(gameObject);
+                    if (GameManager.Instance != null && GameManager.Instance.SquareSpawner != null)
+                    {
+                        GameManager.Instance.SquareSpawner.SpawnNext(gameObject);
+                    }
                 }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+
                 if (GameManager.Instance != null && GameManager.Instance.pointHandler != null)
                 {
                     GameManager.Instance.pointHandler.AddPoint(1);
