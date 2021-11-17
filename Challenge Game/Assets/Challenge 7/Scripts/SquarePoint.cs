@@ -9,6 +9,8 @@ namespace Game.Challenge7
     {
         public bool IsRespawn;
 
+        public int Score = 1;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if(collision.tag == "Player")
@@ -27,7 +29,7 @@ namespace Game.Challenge7
 
                 if (GameManager.Instance != null && GameManager.Instance.pointHandler != null)
                 {
-                    GameManager.Instance.pointHandler.AddPoint(1);
+                    GameManager.Instance.pointHandler.AddPoint(Score);
                 }
             }
         }
