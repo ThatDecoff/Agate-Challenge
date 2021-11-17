@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Challenge4;
+using Game.Challenge6;
 
 namespace Game.Challenge5
 {
@@ -12,6 +13,10 @@ namespace Game.Challenge5
         [Header("Player")]
         public BallMovementInput playerMovement;
         public WorldRectangle WorldRect;
+
+        [Header("Items")]
+        public ObjectSpawner SquareSpawner;
+        public ObstacleHandler obstacleHandler;
 
         private void Awake()
         {
