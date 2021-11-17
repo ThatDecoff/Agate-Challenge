@@ -40,7 +40,7 @@ namespace Game.Challenge6
             pool.FreeObject(obj);
             obj.SetActive(false);
 
-            StartCoroutine("SpawnObject");
+            Invoke("SpawnObject", 3);
         }
 
         private GameObject SpawnObject()

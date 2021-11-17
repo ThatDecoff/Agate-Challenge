@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Challenge4;
 using Game.Challenge6;
+using Game.Challenge7;
 
 namespace Game.Challenge5
 {
@@ -17,6 +18,9 @@ namespace Game.Challenge5
         [Header("Items")]
         public ObjectSpawner SquareSpawner;
         public ObstacleHandler obstacleHandler;
+
+        [Header("Point")]
+        public PointHandler pointHandler;
 
         private void Awake()
         {
