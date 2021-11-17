@@ -7,11 +7,11 @@ namespace Game.Challenge5
 {
     public class GameManager : MonoBehaviour
     {
-        public static GameManager Instance { get; private set; }
+        public static GameManager Instance { get; private set; } = null;
 
         [Header("Player")]
         public BallMovementInput playerMovement;
-        public MoveAreaController MoveArea;
+        public WorldRectangle WorldRect;
 
         private void Awake()
         {

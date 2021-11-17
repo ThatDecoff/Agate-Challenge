@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 332546278}
   - component: {fileID: 332546280}
   m_Layer: 0
-  m_Name: MoveArea
+  m_Name: PlayAreaLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,9 +280,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 332546277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad61b47b05b1e74b986f6d1578d3ea3, type: 3}
+  m_Script: {fileID: 11500000, guid: 43b9216095746154c85cae30528b3552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Min: {x: -8.5, y: -4.5}
+  Max: {x: 8.5, y: 3.5}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +523,7 @@ Transform:
   m_GameObject: {fileID: 1006432675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -925,7 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 1006432680}
-  MoveArea: {fileID: 332546280}
+  WorldRect: {fileID: 332546280}
 --- !u!4 &1471285539
 Transform:
   m_ObjectHideFlags: 0

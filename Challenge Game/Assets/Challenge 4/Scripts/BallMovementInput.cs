@@ -19,13 +19,15 @@ namespace Game.Challenge4
         private Vector2 target;
         private bool isMoving;
 
+        private WorldRectangle worldRect;
+
         private void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
 
-            if (isClickInput)
+            if (GameManager.Instance != null)
             {
-                GameManager.Instance.MoveArea.AddClickListener(MoveToPoint);
+                worldRect = GameManager.Instance.WorldRect;
             }
 
             target = transform.position;
@@ -44,21 +46,36 @@ namespace Game.Challenge4
                 GetClickInput();
             }
 
-            if((Vector2)transform.position == target)
-            {
-                isMoving = false;
-            }
-
-            if(isMoving)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * Speed);
-            }
+            MoveObject();
         }
 
         public void MoveToPoint(Vector2 point)
         {
             target = point;
             isMoving = true;
+        }
+
+        private void MoveObject()
+        {
+            if ((Vector2)transform.position == target)
+            {
+                isMoving = false;
+            }
+
+            if (isMoving)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * Speed);
+                if(worldRect != null)
+                {
+                    bool hasReachedMoveLimit = !worldRect.CheckIsInside(transform.position, transform.localScale/2);
+                    if (hasReachedMoveLimit)
+                    {
+                        Vector3 newPos = worldRect.ClampToWorld(transform.position);
+                        transform.position = newPos;
+                        isMoving = false;
+                    }
+                }
+            }
         }
 
         private void GetInput()
@@ -83,16 +100,6 @@ namespace Game.Challenge4
                 //Debug.Log($"{GetType()}: Clicked 0 at {Input.mousePosition}");
                 Vector2 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 MoveToPoint(MousePos);
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if(collision.transform.tag == "Wall")
-            {
-                //Debug.Log($"{GetType()}: COLLIDED");
-                target = transform.position;
-                isMoving = false;
             }
         }
     }
