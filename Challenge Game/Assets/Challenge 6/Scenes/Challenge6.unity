@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
-  isKeyboardInput: 1
+  isKeyboardInput: 0
   isClickInput: 1
 --- !u!1 &1193932226
 GameObject:
@@ -971,6 +971,7 @@ MonoBehaviour:
   WorldRect: {fileID: 332546280}
   SquareSpawner: {fileID: 1301828138}
   obstacleHandler: {fileID: 332546278}
+  pointHandler: {fileID: 0}
 --- !u!4 &1471285539
 Transform:
   m_ObjectHideFlags: 0
