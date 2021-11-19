@@ -22,6 +22,8 @@ namespace Game.Challenge5
         [Header("Point")]
         public PointHandler pointHandler;
 
+
+
         private void Awake()
         {
             Instance = this;
