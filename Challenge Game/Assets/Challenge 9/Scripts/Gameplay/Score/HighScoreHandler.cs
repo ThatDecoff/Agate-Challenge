@@ -10,7 +10,7 @@ namespace Game.Challenge9
     {
         public HighScoreObject highScoreData;
 
-        private void Start()
+        public void Start()
         {
             if (PlayerPrefs.HasKey("SaveData"))
             {
