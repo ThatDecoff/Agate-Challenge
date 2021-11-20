@@ -18,12 +18,15 @@ namespace Game.Challenge9
             return (xIsInside && yIsInside);
         }
 
-        public Vector3 ClampToWorld(Vector3 position)
+        public Vector3 ClampToWorld(Vector3 position, Vector2 offset)
         {
             Vector3 result = Vector3.zero;
 
-            result.x = Mathf.Clamp(position.x, Min.x, Max.x);
-            result.y = Mathf.Clamp(position.y, Min.y, Max.y);
+            Vector3 MinOffset = Min + offset;
+            Vector3 MaxOffset = Max - offset;
+
+            result.x = Mathf.Clamp(position.x, MinOffset.x, MaxOffset.x);
+            result.y = Mathf.Clamp(position.y, MinOffset.y, MaxOffset.y);
 
             return result;
         }

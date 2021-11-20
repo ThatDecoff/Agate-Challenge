@@ -57,7 +57,7 @@ namespace Game.Challenge9
                     bool hasReachedMoveLimit = !worldRect.CheckIsInside(transform.position, transform.localScale/2);
                     if (hasReachedMoveLimit)
                     {
-                        Vector3 newPos = worldRect.ClampToWorld(transform.position);
+                        Vector3 newPos = worldRect.ClampToWorld(transform.position, transform.localScale / 2);
                         transform.position = newPos;
                         isMoving = false;
                     }
