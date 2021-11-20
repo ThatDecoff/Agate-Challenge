@@ -7,7 +7,7 @@ namespace Game.Challenge9
 {
     public class ScoreHandler : MonoBehaviour
     {
-        public int Score = 0;
+        public int Score { get; private set; }
 
         public HighScoreHandler highScoreHandler;
 
@@ -15,6 +15,7 @@ namespace Game.Challenge9
 
         private void Start()
         {
+            Score = 0;
             SetView();
         }
 

@@ -8,10 +8,20 @@ namespace Game.Challenge9
     {
         public WorldRectangle worldRect;
 
+        public List<GameObject> AssignedObjects;
+
         private List<GameObject> obstacles = new List<GameObject>();
 
         private Vector2 Min = Vector2.zero;
         private Vector2 Max = Vector2.zero;
+
+        private void Awake()
+        {
+            foreach (GameObject obj in AssignedObjects)
+            {
+                AddObject(obj);
+            }
+        }
 
         private void Start()
         {
@@ -58,10 +68,21 @@ namespace Game.Challenge9
                     continue;
                 }
 
-                bool TopLeftInside = IsPointInsideRect(TopLeft, obj.transform.position - obj.transform.localScale, obj.transform.position + obj.transform.localScale);
-                bool TopRightInside = IsPointInsideRect(TopRight, obj.transform.position - obj.transform.localScale, obj.transform.position + obj.transform.localScale);
-                bool BottomLeftInside = IsPointInsideRect(BottomLeft, obj.transform.position - obj.transform.localScale, obj.transform.position + obj.transform.localScale);
-                bool BottomRightInside = IsPointInsideRect(BottomRight, obj.transform.position - obj.transform.localScale, obj.transform.position + obj.transform.localScale);
+                Vector3 ObjPosition = obj.transform.position;
+                Vector3 ObjScale = obj.transform.localScale;
+
+                if(obj.tag == "Player")
+                {
+                    ObjScale = new Vector2(3, 3);
+                }
+
+                Vector3 ObjMin = ObjPosition - ObjScale;
+                Vector3 ObjMax = ObjPosition + ObjScale;
+
+                bool TopLeftInside = IsPointInsideRect(TopLeft, ObjMin, ObjMax);
+                bool TopRightInside = IsPointInsideRect(TopRight, ObjMin, ObjMax);
+                bool BottomLeftInside = IsPointInsideRect(BottomLeft, ObjMin, ObjMax);
+                bool BottomRightInside = IsPointInsideRect(BottomRight, ObjMin, ObjMax);
 
                 if(TopLeftInside || TopRightInside || BottomLeftInside || BottomRightInside)
                 {

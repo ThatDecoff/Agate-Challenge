@@ -10,6 +10,8 @@ namespace Game.Challenge9
     {
         public HighScoreObject highScoreData;
 
+        public int DefaultScore = 25;
+
         public void Start()
         {
             if (PlayerPrefs.HasKey("SaveData"))
@@ -28,10 +30,11 @@ namespace Game.Challenge9
             List<ScoreData> newData = new List<ScoreData>();
             for(int i = 0; i < 10; i++)
             {
-                ScoreData obj = new ScoreData("ABC", 25);
+                ScoreData obj = new ScoreData("ABC", DefaultScore);
                 newData.Add(obj);
             }
             highScoreData.scores = newData;
+            Save();
         }
 
         public void AddData(ScoreData data)

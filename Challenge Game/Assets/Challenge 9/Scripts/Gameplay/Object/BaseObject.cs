@@ -5,7 +5,7 @@ namespace Game.Challenge9
 {
     public class BaseObject : MonoBehaviour
     {
-        public float Speed = 100f;
+        public float Speed = 5f;
 
         public event Action<BaseObject> OnDespawn = delegate { };
 

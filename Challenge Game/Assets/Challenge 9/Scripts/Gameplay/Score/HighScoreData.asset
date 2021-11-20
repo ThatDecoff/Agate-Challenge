@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: HighScoreData
   m_EditorClassIdentifier: 
   scores:
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
-  - Name: 
-    Score: 0
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: ABC
+    Score: 25
+  - Name: MMMMMMMMMMMM
+    Score: 13

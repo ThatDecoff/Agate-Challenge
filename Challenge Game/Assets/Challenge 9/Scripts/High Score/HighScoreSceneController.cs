@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,18 +11,42 @@ namespace Game.Challenge9
 
         public ScorePanel prefab;
         public Transform HighScoreParent;
+
+        public Button ResetButton;
         public Button BackButton;
+
+        private List<ScorePanel> scorePanel = new List<ScorePanel>();
 
         private void Start()
         {
             highScoreHandler.Start();
-            foreach(ScoreData data in highScoreHandler.highScoreData.scores)
+
+            SetupView();
+
+            ResetButton.onClick.AddListener(ResetScore);
+            BackButton.onClick.AddListener(ReturnToMainMenu);
+        }
+
+        private void SetupView()
+        {
+            foreach(ScorePanel panel in scorePanel)
+            {
+                Destroy(panel.gameObject);
+            }
+            scorePanel.Clear();
+
+            foreach (ScoreData data in highScoreHandler.highScoreData.scores)
             {
                 ScorePanel obj = Instantiate(prefab, HighScoreParent);
                 obj.UpdateView(data.Name, data.Score);
+                scorePanel.Add(obj);
             }
+        }
 
-            BackButton.onClick.AddListener(ReturnToMainMenu);
+        private void ResetScore()
+        {
+            highScoreHandler.ResetData();
+            SetupView();
         }
 
         public void ReturnToMainMenu()

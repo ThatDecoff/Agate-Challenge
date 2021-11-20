@@ -12,6 +12,7 @@ namespace Game.Challenge9
         [Header("Dependency")]
         public WorldRectangle worldRect;
         public ObstacleHandler obstacleHandler;
+        public GameOverHandler gameOverHandler;
 
         private Rigidbody2D rb2d;
 
@@ -20,9 +21,9 @@ namespace Game.Challenge9
 
         private void Start()
         {
-            rb2d = GetComponent<Rigidbody2D>();
+            //obstacleHandler.AddObject(gameObject);
 
-            obstacleHandler.AddObject(gameObject);
+            rb2d = GetComponent<Rigidbody2D>();
 
             target = transform.position;
             isMoving = false;

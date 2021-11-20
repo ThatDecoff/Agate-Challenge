@@ -15,6 +15,8 @@ namespace Game.Challenge9
 
         public void ShowText(int Score, Action<string> OnButtonclick)
         {
+            Debug.Log($"{GetType()}: Show HighScore Modal");
+
             ScoreText.text = $"Your score is\n{Score}";
 
             ConfirmButton.onClick.RemoveAllListeners();

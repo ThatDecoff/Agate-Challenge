@@ -12,15 +12,15 @@ namespace Game.Challenge9
 
         public Text ScoreText;
 
-        private void Start()
-        {
-            ConfirmButton.onClick.AddListener(() => { gameOverHandler.ReturnToMainMenu(); });
-            gameObject.SetActive(false);
-        }
-
         public void ShowText(int Score)
         {
+            Debug.Log($"{GetType()}: Show Score Modal");
+
             ScoreText.text = $"Your score is\n{Score}";
+
+            ConfirmButton.onClick.RemoveAllListeners();
+            ConfirmButton.onClick.AddListener(() => { gameOverHandler.ReturnToMainMenu(); });
+
             gameObject.SetActive(true);
         }
     }

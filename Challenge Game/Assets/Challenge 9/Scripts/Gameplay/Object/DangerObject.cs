@@ -10,6 +10,7 @@ namespace Game.Challenge9
 
         protected override void OnPlayerEnter(GameObject player)
         {
+            Debug.Log($"{GetType()}: OnPlayerEnter");
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
 
             if(playerHealth != null)

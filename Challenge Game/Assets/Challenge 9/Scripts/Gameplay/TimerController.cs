@@ -21,13 +21,13 @@ namespace Game.Challenge9
 
         public void Update()
         {
-            if(timer > 0)
+            if(timer > 0 && (!gameOverHandler.IsOver && !gameOverHandler.IsPaused))
             {
                 timer -= (long)Mathf.Round(Time.deltaTime * 1000);
                 if (timer < 0) timer = 0;
                 TimerText.text = ConvertTimer(timer);
             }
-            else
+            else if(timer <= 0)
             {
                 OnTimerExpire();
             }
